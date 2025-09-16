@@ -61,6 +61,12 @@ class SettingForm
                                     TextInput::make('githup')
                                         ->label('جيت هاب')
                                         ->url(),
+                                    TextInput::make('whatsapp')
+                                        ->label('واتساب')
+                                        ->url(),
+                                    TextInput::make('telegram')
+                                        ->label('تيلغرام')
+                                        ->url(),
                                 ])
                                 ->columns(1)
                                 ->extraAttributes(['class' => 'bg-gray-50 dark:bg-gray-800 p-4 rounded-lg shadow-sm']),

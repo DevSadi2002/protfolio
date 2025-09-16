@@ -16,15 +16,15 @@ return new class extends Migration
             // Experiences
             $table->foreignId('about_id')->constrained()->onDelete('cascade'); // الربط مع الجدول الرئيسي
             $table->string('title');
-            
+
             $table->string('company');
-            $table->string('company_links');
             $table->string('location')->nullable();
             $table->year('start_date')->nullable();
             $table->year('end_date')->nullable();
 
 
-            $table->longText('description_title')->nullable();
+            // $table->string('company_links')->nullable();
+            // $table->longText(column: 'description_title')->nullable();
             $table->longText('description')->nullable();
             $table->timestamps();
         });

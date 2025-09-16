@@ -13,7 +13,7 @@
 
     <meta property="og:title" content="Annie Wu" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="http://anniew.xyz" />
+    {{-- <meta property="og:url" content="http://anniew.xyz" /> --}}
     <meta property="og:description" content="Hi! I'm Annie." />
     <meta property="og:locale" content="en_US" />
     <meta property="og:image" content="https://anniew.xyz/img/me-icon-smiling.png" />
@@ -31,7 +31,7 @@
         content="Annie Wu, Annie Wu Portfolio, Annie Wu Photography, photographer, developer, java, python, html, css, javascript, web developer, webdev, portfolio, quality assurance, qa engineer, quality assurance engineer">
     <meta name="robots" content="noindex, nofollow" />
 
-    <link rel="canonical" href="https://anniew.xyz" />
+    {{-- <link rel="canonical" href="https://anniew.xyz" /> --}}
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -55,12 +55,11 @@
 
     @include('livewire.navbar')
 
+
     {{ $slot }}
 
 
-    <footer class="footer-container">
         @include('components.layouts.footer')
-    </footer>
 
 
     {{-- Scripts pacess --}}

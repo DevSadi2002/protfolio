@@ -1,4 +1,4 @@
-<div wire:poll>
+<div class="main-container" wire:poll>
     <main class="main-container about-section">
         <section id="profile">
             <div class="page-title">
@@ -8,11 +8,10 @@
             <p class="section-description">
                 Exploring pixels and code, one quality click at a time.
             </p>
-            <div class="profile-container">
+            <div class="profile-container-about">
                 <div class="me-icon-container">
-                    <img class="me-icon" src="{{ asset('css/website/img/me-icon.gif') }}"
-                        alt="Icon of myself with my bear puppy, Coconut, on top of my head"
-                        title="Icon of me and Coconut. Art credits to @wynn.draws">
+                    <dotlottie-wc src="https://lottie.host/53353952-22b8-4e09-8088-b931a00f5037/q4VIMef01K.lottie"
+                        style="width: 250px;height: 250px" speed="1" autoplay loop></dotlottie-wc>
                 </div>
                 <div class="terminal-container">
                     <div class="terminal-header">
@@ -49,7 +48,7 @@
             <div id="education" class="education-experience-container">
                 <h3>Education</h3>
                 <div class="education-experience-card">
-                    <div class="card-info">
+                    <div class="card-info-about">
                         <h4 class="green">{{ $profile->degree }}</h4>
                         <p>{{ $profile->institution }}</p>
                     </div>
@@ -67,7 +66,7 @@
                 <h3>Experience</h3>
                 @foreach ($profile->experience as $experience)
                     <div class="education-experience-card">
-                        <div class="card-info">
+                        <div class="card-info-about">
                             <h4 class="green">{{ $experience->title }}</h4>
                             <p class="date">{{ $experience->start_date }} - Present</p>
                             <p>
@@ -79,12 +78,9 @@
                             </p>
                         </div>
                         <div class="card-description">
-                            <h5>{{ $experience->description }}</h5>
-                            <p>Develop and execute comprehensive test plans and test cases for
-                                manual functional, end-to-end, and
-                                regression testing of web applications, ensuring adherence to
-                                software requirements and acceptance
-                                criteria.
+                            <h5>{{ $experience->description_title }}</h5>
+                            <p>
+                                {{ $experience->description }}
                             </p>
 
                         </div>

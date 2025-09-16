@@ -64,6 +64,11 @@ class AboutForm
                                     ->placeholder('مثال: شركة التقنية الحديثة')
                                     ->required(),
 
+                                TextInput::make('company_links')
+                                    ->label('رابط موقع الشركة')
+                                    ->placeholder('مثال: www.laravel.com')
+                                    ->required(),
+
                                 TextInput::make('location')
                                     ->label('الموقع')
                                     ->placeholder('مثال: غزة، فلسطين')
@@ -79,7 +84,9 @@ class AboutForm
                                     ->nullable()
                                     ->numeric()
                                     ->helperText('اتركه فارغاً إذا كنت تعمل حالياً في هذه الوظيفة.'),
-
+                                TextInput::make('description_title')
+                                    ->placeholder('مثال: محلل بيانات مواقع')
+                                    ->label('مسؤولياتك ومهامك في هذه الوظيفة'),
                                 MarkdownEditor::make('description')
                                     ->label('وصف العمل')
                                     ->placeholder('صف مسؤولياتك ومهامك في هذه الوظيفة.')

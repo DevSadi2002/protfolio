@@ -45,6 +45,16 @@
                             <i class="fa-brands fa-instagram"></i>
                         </a>
                     </li>
+                    <li class="social-link">
+                        <a href="{{ $setting->whatsapp }}" aria-label="WhatsApp" target="_blank">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </a>
+                    </li>
+                    <li class="social-link">
+                        <a href="{{ $setting->whatsapp }}" aria-label="Telegram" target="_blank">
+                            <i class="fa-brands fa-telegram"></i>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </section>

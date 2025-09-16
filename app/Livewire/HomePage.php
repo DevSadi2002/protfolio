@@ -12,7 +12,7 @@ class HomePage extends Component
     {
         return view('livewire.home-page', [
             'setting' => Setting::first(),
-            'project' => Project::all()
+            'project' => Project::where('is_important', true)->take(4)->get()
         ]);
     }
 }

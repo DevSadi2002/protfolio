@@ -20,6 +20,8 @@ class Setting extends Model
         'instgram',
         'linkedin',
         'githup',
+        'whatsapp',
+        'telegram',
         'copyright_holder',
         'copyright_start',
         'copyright_end',

@@ -21,6 +21,8 @@ return new class extends Migration
             // $table->json('social_links')->nullable();
             $table->string('instgram')->nullable();
             $table->string('linkedin')->nullable();
+            $table->string('whatsapp')->nullable();
+            $table->string('telegram')->nullable();
             $table->string('githup')->nullable();
 
 

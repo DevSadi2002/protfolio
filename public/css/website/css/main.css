@@ -13,7 +13,9 @@ body {
     background-color: #1D263B;
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
     font-family: 'Fira Mono', monospace;
 }
 
@@ -32,7 +34,8 @@ h3 {
     letter-spacing: 0.1em;
 }
 
-a, span {
+a,
+span {
     font-family: inherit;
     font-size: inherit;
     font-weight: inherit;
@@ -117,6 +120,7 @@ section .hyperlink:hover {
     h2 {
         font-size: 2.5em;
     }
+
     h3 {
         font-size: 2em;
     }

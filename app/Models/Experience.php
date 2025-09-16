@@ -14,9 +14,12 @@ class Experience extends Model
         // Experiences
         'title',
         'company',
+        'company_links',
         'location',
         'start_date',
         'end_date',
+
+        'description_title',
         'description',
     ];
 
