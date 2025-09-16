@@ -9,17 +9,22 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-public function up(): void
+    public function up(): void
     {
         Schema::create('experiences', function (Blueprint $table) {
             $table->id();
             // Experiences
             $table->foreignId('about_id')->constrained()->onDelete('cascade'); // الربط مع الجدول الرئيسي
             $table->string('title');
+            
             $table->string('company');
+            $table->string('company_links');
             $table->string('location')->nullable();
             $table->year('start_date')->nullable();
             $table->year('end_date')->nullable();
+
+
+            $table->longText('description_title')->nullable();
             $table->longText('description')->nullable();
             $table->timestamps();
         });

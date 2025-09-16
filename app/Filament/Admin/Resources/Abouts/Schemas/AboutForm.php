@@ -88,6 +88,32 @@ class AboutForm
                             ])
                     ])
                     ->columnSpanFull(),
+                Section::make('بطاقات التعريف')
+                    ->description('أضف معلومات تعريفية عن نفسك مثل الاسم، الألقاب، الضمائر، أو أي بيانات قصيرة ترغب بعرضها.')
+                    ->icon(Heroicon::OutlinedIdentification)
+                    ->schema([
+                        Repeater::make('statements')
+                            ->relationship() // يربط مع دالة statements() في الـ Model
+                            ->label('بطاقة تعريف')
+                            ->schema([
+                                TextInput::make('key')
+                                    ->label('نوع المعلومات')
+                                    ->placeholder('مثال: الاسم، الضمائر، الوظيفة')
+                                    ->required()
+                                    ->helperText('حدد نوع المعلومات أو العنوان الذي ستعرضه.'),
+
+                                TextInput::make('value')
+                                    ->label('القيمة')
+                                    ->placeholder('مثال: Saadi Saadi، she/her، مطور ويب')
+                                    ->required()
+                                    ->helperText('ضع القيمة المناسبة للنوع المختار.'),
+                            ])
+                            ->columns(2)
+                            ->createItemButtonLabel('أضف بطاقة جديدة')
+                            ->collapsible(),
+                    ])
+                    ->columnSpanFull(),
+
 
                 // Section للمهارات باستخدام Repeater
                 Section::make('المهارات التقنية')
@@ -106,6 +132,7 @@ class AboutForm
                                 FileUpload::make('icon')
                                     ->label('أيقونة المهارة')
                                     ->image()
+                                    ->disk('public')
                                     ->directory('skills') // حفظ الصور في storage/app/public/skills
                                     ->required()
                                     ->downloadable()

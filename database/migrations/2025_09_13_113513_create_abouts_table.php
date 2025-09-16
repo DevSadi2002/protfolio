@@ -20,7 +20,7 @@ return new class extends Migration
             // Educations
             $table->string('degree');
             $table->string('institution');
-            $table->json('achievements')->nullable(); // أو text
+            $table->json(column: 'achievements')->nullable(); // أو text
 
             // // Experiences
             // $table->string('title');

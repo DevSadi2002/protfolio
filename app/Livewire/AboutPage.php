@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Models\About;
 use App\Models\Setting;
 use Livewire\Attributes\Title;
 use Livewire\Component;
@@ -14,6 +15,7 @@ class AboutPage extends Component
 
         return view('livewire.about-page', [
             'settings' => Setting::first(),
+            'profile' => About::first(),
         ]);
     }
 }
