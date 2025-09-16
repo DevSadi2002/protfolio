@@ -1,33 +1,30 @@
-/* ===== General ===== */
-em {
+/* ========== الأساسيات العامة للصفحة ========== */
+body {
+    background: #1D263B;
+    /* خلفية غامقة */
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
     color: #1D263B;
 }
 
+/* الكونتينر العام للمشاريع */
 .projects {
     padding-top: 100px;
     max-width: 1200px;
     margin: 0 auto;
-    /* text-align: center; */
+    /* توسيط */
 }
 
-.section-description {
-    color: #666;
-    margin-top: 10px;
-    line-height: 1.6;
-}
-
-/* ===== Container ===== */
+/* شبكة البطاقات: 2 في الصف على الشاشات الكبيرة */
 .project-cards-container {
-    margin-top: 50px;
     display: grid;
-    grid-template-columns: 1fr;
-    /* موبايل */
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 2em;
-    align-items: stretch;
+    margin-top: 50px;
 }
 
-
-/* ===== Card ===== */
+/* ========== تصميم البطاقة ========== */
 .card {
     display: flex;
     flex-direction: column;
@@ -35,52 +32,41 @@ em {
     border-radius: 10px;
     overflow: hidden;
     height: 100%;
-    /* يخلي كل البطاقات نفس الطول */
+    /* يخلي البطاقات بنفس الطول */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease;
 }
-
-
 
 .card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    /* حركة خفيفة عند المرور */
 }
 
-/* ===== Image ===== */
+/* صورة البريفيو */
 .card-preview-img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
+    max-width: 100%;
+    border-radius: 10px 10px 0 0;
     padding: 5px;
-    /* قص متناسق للصورة */
-    background-color: #fff;
+    background-color: white;
 }
 
-/* ===== Info ===== */
-
+/* محتوى البطاقة */
 .card-info {
     flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    width: 100%;
-    /* مهم: يخلي المحتوى ياخد عرض البطاقة كامل */
+    justify-content: flex-start;
     padding: 20px;
+    width: 100%;
 }
 
-/* ===== Title & Links ===== */
+/* ========== العنوان + الروابط ========== */
 .title-and-links {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 12px;
-}
-
-
-.title-and-links,
-.project-skills,
-.project-description {
+    margin-bottom: 15px;
     width: 100%;
-    /* يجبرهم يمدّو بعرض الكرت */
 }
 
 .project-title {
@@ -103,10 +89,10 @@ em {
 
 .project-links a i:hover {
     color: #7EB77F;
-    transform: scale(1.2);
+    transform: scale(1.1);
 }
 
-/* ===== Skills ===== */
+/* ========== skills (التقنيات) ========== */
 .project-skills {
     display: flex;
     flex-wrap: wrap;
@@ -115,26 +101,29 @@ em {
     padding-bottom: 12px;
     border-bottom: 1px solid #7EB77F;
     width: 100%;
-    /* يمددها */
 }
 
 .project-skills span {
-    background-color: #E6F7FA;
+    background: #E6F7F8;
     color: #0FA3B1;
     font-weight: 600;
     font-size: 0.85em;
-    padding: 4px 8px;
-    border-radius: 5px;
-    letter-spacing: 0.05em;
+    padding: 5px 10px;
+    border-radius: 6px;
 }
 
-/* ===== Description ===== */
+/* ========== الوصف ========== */
 .project-description {
     color: #1D263B;
     font-size: 0.95em;
-    line-height: 1.6;
-    margin-top: auto;
-    text-align: left;
+    line-height: 1.5;
+    flex-grow: 1;
+    /* يمد النص لباقي الطول */
+    overflow: hidden;
+    display: -webkit-box;
+    /* -webkit-line-clamp: 5; */
+    /* يظهر فقط 5 سطور */
+    -webkit-box-orient: vertical;
 }
 
 /* ===== Responsive ===== */

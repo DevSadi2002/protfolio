@@ -58,7 +58,7 @@ class SettingForm
                                     TextInput::make('instgram')
                                         ->label('انستغرام')
                                         ->url(),
-                                    TextInput::make('github')
+                                    TextInput::make('githup')
                                         ->label('جيت هاب')
                                         ->url(),
                                 ])

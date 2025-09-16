@@ -87,7 +87,7 @@
                                 @endforeach
                             </div>
                             <p class="project-description">
-                                {{ Str::limit($projects->description, 100) }}
+                                {{ Str::limit(value: $projects->description, limit: 200) }}
                                 {{-- {{ $projects->description }} --}}
                             </p>
 

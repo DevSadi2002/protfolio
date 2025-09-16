@@ -2,7 +2,7 @@
     <section id="profile">
         <div class="page-title">
             <img src="{{ asset('css/website/img/smile.svg') }}" alt="Smile Icon">
-            <h2>annie.<span class="pink">profile</span></h2>
+            <h2>{{ $settings->copyright_holder }}<span class="pink">.profile</span></h2>
         </div>
         <p class="section-description">
             Exploring pixels and code, one quality click at a time.
