@@ -1,7 +1,7 @@
 <div wire:poll>
     <section id="profile">
         <div class="page-title">
-            <img src="./img/smile.svg" alt="Smile Icon">
+            <img src="{{ asset('css/website/img/smile.svg') }}" alt="Smile Icon">
             <h2>annie.<span class="pink">profile</span></h2>
         </div>
         <p class="section-description">
@@ -9,7 +9,7 @@
         </p>
         <div class="profile-container">
             <div class="me-icon-container">
-                <img class="me-icon" src="./img/me-icon.gif"
+                <img class="me-icon" src="{{ asset('css/website/img/me-icon.gif') }}"
                     alt="Icon of myself with my bear puppy, Coconut, on top of my head"
                     title="Icon of me and Coconut. Art credits to @wynn.draws">
             </div>
@@ -39,14 +39,6 @@
                             los angeles, california
                         </p>
                     </div>
-                    <!-- <div class="statement">
-                                <p class="input">
-                                    annie.<span class="green">resume</span>
-                                </p>
-                                <p class="return">
-                                    <a href="/Annie-Wu-Resume.pdf" class="hyperlink">anniewu.pdf</a>
-                                </p>
-                            </div> -->
                     <div class="statement">
                         <p class="input">
                             annie.<span class="green">languages</span>
@@ -153,59 +145,58 @@
         <h3>Tech Stack</h3>
         <div class="tech-stack-container">
             <div class="skill">
-                <img src="./img/git.svg" alt="Git Icon"><span>Git</span>
+                <img src="{{ asset('css/website/img/git.svg') }}" alt="Git Icon"><span>Git</span>
             </div>
             <div class="skill">
-                <img src="./img/html5.svg" alt="HTML5 Icon"><span>HTML5</span>
+                <img src="{{ asset('css/website/img/html5.svg') }}" alt="HTML5 Icon"><span>HTML5</span>
             </div>
             <div class="skill">
-                <img src="./img/css3.svg" alt="CSS3 Icon"><span>CSS3</span>
+                <img src="{{ asset('css/website/img/css3.svg') }}" alt="CSS3 Icon"><span>CSS3</span>
             </div>
             <div class="skill">
-                <img src="./img/markdown.svg" alt="Markdown Icon"><span>Markdown</span>
+                <img src="{{ asset('css/website/img/markdown.svg') }}" alt="Markdown Icon"><span>Markdown</span>
             </div>
             <div class="skill">
-                <img src="./img/java.svg" alt="Java Icon"><span>Java</span>
+                <img src="{{ asset('css/website/img/java.svg') }}" alt="Java Icon"><span>Java</span>
             </div>
             <div class="skill">
-                <img src="./img/python.svg" alt="Python Icon"><span>Python</span>
+                <img src="{{ asset('css/website/img/python.svg') }}" alt="Python Icon"><span>Python</span>
             </div>
             <div class="skill">
-                <img src="./img/firebase.svg" alt="Firebase Icon"><span>Firebase</span>
+                <img src="{{ asset('css/website/img/firebase.svg') }}" alt="Firebase Icon"><span>Firebase</span>
             </div>
             <div class="skill">
-                <img src="./img/vscode.svg" alt="VS Code Icon"><span>VS Code</span>
+                <img src="{{ asset('css/website/img/vscode.svg') }}" alt="VS Code Icon"><span>VS Code</span>
             </div>
             <div class="skill">
-                <img src="./img/computer.svg" alt="Computer Icon"><span>PC
+                <img src="{{ asset('css/website/img/computer.svg') }}" alt="Computer Icon"><span>PC
                     Hardware</span>
             </div>
             <div class="skill">
-                <img src="./img/windows.svg" alt="Windows Icon"><span>Windows OS</span>
+                <img src="{{ asset('css/website/img/windows.svg') }}" alt="Windows Icon"><span>Windows OS</span>
             </div>
             <div class="skill">
-                <img src="./img/android.svg" alt="Android Icon"><span>Android OS</span>
+                <img src="{{ asset('css/website/img/android.svg') }}" alt="Android Icon"><span>Android OS</span>
             </div>
             <div class="skill">
-                <img src="./img/ios.svg" alt="iOS Icon"><span>iOS</span>
+                <img src="{{ asset('css/website/img/ios.svg') }}" alt="iOS Icon"><span>iOS</span>
             </div>
             <div class="skill">
-                <img src="./img/salesforce.svg" alt="Salesforce Icon"><span>Salesforce
+                <img src="{{ asset('css/website/img/salesforce.svg') }}" alt="Salesforce Icon"><span>Salesforce
                     CRM</span>
             </div>
             <div class="skill">
-                <img src="./img/qase.webp" alt="Qase Icon" height="24"><span>Qase</span>
+                <img src="{{ asset('css/website/img/qase.webp') }}" alt="Qase Icon" height="24"><span>Qase</span>
             </div>
             <div class="skill">
-                <img src="./img/shortcut.svg" alt="Shortcut Icon" height="24"><span>Shortcut</span>
+                <img src="{{ asset('css/website/img/shortcut.svg') }}" alt="Shortcut Icon"
+                    height="24"><span>Shortcut</span>
             </div>
             <div class="skill">
-                <img src="./img/datadog.svg" alt="DataDog Icon" height="24"><span>DataDog
+                <img src="{{ asset('css/website/img/datadog.svg') }}" alt="DataDog Icon"
+                    height="24"><span>DataDog
                     Synthetic Tests</span>
             </div>
-            <!-- <div class="skill">
-                        <img src="./img/.svg" alt=""><span></span>
-                    </div> -->
         </div>
     </section>
     <section id="all-social-media">

@@ -1,0 +1,151 @@
+/* ===== General ===== */
+em {
+    color: #1D263B;
+}
+
+.projects {
+    padding-top: 100px;
+    max-width: 1200px;
+    margin: 0 auto;
+    /* text-align: center; */
+}
+
+.section-description {
+    color: #666;
+    margin-top: 10px;
+    line-height: 1.6;
+}
+
+/* ===== Container ===== */
+.project-cards-container {
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: 1fr;
+    /* موبايل */
+    gap: 2em;
+    align-items: stretch;
+}
+
+
+/* ===== Card ===== */
+.card {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    height: 100%;
+    /* يخلي كل البطاقات نفس الطول */
+}
+
+
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* ===== Image ===== */
+.card-preview-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    padding: 5px;
+    /* قص متناسق للصورة */
+    background-color: #fff;
+}
+
+/* ===== Info ===== */
+
+.card-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    /* مهم: يخلي المحتوى ياخد عرض البطاقة كامل */
+    padding: 20px;
+}
+
+/* ===== Title & Links ===== */
+.title-and-links {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+
+.title-and-links,
+.project-skills,
+.project-description {
+    width: 100%;
+    /* يجبرهم يمدّو بعرض الكرت */
+}
+
+.project-title {
+    font-size: 1.2em;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: #1D263B;
+}
+
+.project-links {
+    display: flex;
+    gap: 8px;
+}
+
+.project-links a i {
+    color: #F08CAE;
+    font-size: 1.2em;
+    transition: all 0.2s ease;
+}
+
+.project-links a i:hover {
+    color: #7EB77F;
+    transform: scale(1.2);
+}
+
+/* ===== Skills ===== */
+.project-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #7EB77F;
+    width: 100%;
+    /* يمددها */
+}
+
+.project-skills span {
+    background-color: #E6F7FA;
+    color: #0FA3B1;
+    font-weight: 600;
+    font-size: 0.85em;
+    padding: 4px 8px;
+    border-radius: 5px;
+    letter-spacing: 0.05em;
+}
+
+/* ===== Description ===== */
+.project-description {
+    color: #1D263B;
+    font-size: 0.95em;
+    line-height: 1.6;
+    margin-top: auto;
+    text-align: left;
+}
+
+/* ===== Responsive ===== */
+@media only screen and (min-width: 768px) {
+    .project-cards-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .project-cards-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}

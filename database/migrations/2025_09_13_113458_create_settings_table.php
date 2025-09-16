@@ -13,6 +13,21 @@ return new class extends Migration
     {
         Schema::create('settings', function (Blueprint $table) {
             $table->id();
+
+            $table->text('description')->nullable();
+            $table->string('email')->nullable();
+
+            // لينكات التواصل الاجتماعي
+            // $table->json('social_links')->nullable();
+            $table->string('instgram')->nullable();
+            $table->string('linkedin')->nullable();
+            $table->string('githup')->nullable();
+
+
+            // footer
+            $table->string('copyright_holder')->nullable(); // صاحب الحقوق مثل "Annie Wu"
+            $table->year('copyright_start')->nullable();     // سنة البداية
+            $table->year('copyright_end')->nullable();       // سنة النهاية
             $table->timestamps();
         });
     }
