@@ -11,12 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('statements', function (Blueprint $table) {
+        Schema::create('skills', function (Blueprint $table) {
             $table->id();
-            // Statements (terminal info)
-            $table->foreignId('about_id')->constrained()->cascadeOnDelete();
-            $table->string('key');
-            $table->text('value');
+            // Skills (Tech Stack)
+            $table->foreignId('about_id')->constrained()->onDelete('cascade'); // الربط مع الجدول الرئيسي
+            $table->string('name');
+            $table->string('icon')->nullable();
+
             $table->timestamps();
         });
     }
@@ -26,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('statements');
+        Schema::dropIfExists('skills');
     }
 };

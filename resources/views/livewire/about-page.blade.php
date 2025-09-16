@@ -140,6 +140,7 @@
                         reducing response time.</p>
                 </div>
             </div>
+            
     </section>
     <section id="tech-stack">
         <h3>Tech Stack</h3>

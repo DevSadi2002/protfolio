@@ -19,27 +19,38 @@ class About extends Model
         'institution',
         'achievements',
 
-        // Experiences
 
-        'title',
-        'company',
-        'location',
-        'start_date',
-        'end_date',
-        'description',
 
-        // Skills (Tech Stack)
+        // // Skills (Tech Stack)
 
-        'name',
-        'icon',
+        // 'name',
+        // 'icon',
     ];
 
     protected $casts = [
-        'achievements' => 'array'
+        'achievements' => 'array',
     ];
 
-    public function statements()
+    public function statements(): HasMany
     {
         return $this->hasMany(Statement::class);
+    }
+    public function skills(): HasMany
+    {
+        return $this->hasMany(Skill::class);
+    }
+
+    public function experience(): HasMany
+    {
+        return $this->hasMany(Experience::class);
+    }
+    public static function booted()
+    {
+        static::creating(function ($about) {
+            // إذا وجد سجل مسبقًا، امنع الإنشاء
+            if (self::exists()) {
+                throw new \Exception('يمكن إنشاء سجل واحد فقط لصفحة التوصيف.');
+            }
+        });
     }
 }
