@@ -18,9 +18,25 @@ class SettingResource extends Resource
 {
     protected static ?string $model = Setting::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    // أيقونة القائمة الجانبية
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedDocumentText;
 
-    protected static ?string $recordTitleAttribute = 'Setting';
+    // اسم الحقل الذي يمثل العنوان
+    protected static ?string $recordTitleAttribute = 'name';
+
+    // اسم المجموعة في القائمة
+    // protected static ?string $navigationGroup = 'الإعدادات العامة';
+
+    // اسم المورد بالعربية
+    public static function getModelLabel(): string
+    {
+        return 'إعداد';
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return 'الإعدادات';
+    }
 
     public static function form(Schema $schema): Schema
     {
@@ -38,6 +54,8 @@ class SettingResource extends Resource
             //
         ];
     }
+
+    // منع تكرار سجل الإعدادات (يُنشأ مرة واحدة فقط)
     public static function canCreate(): bool
     {
         return !Setting::exists();

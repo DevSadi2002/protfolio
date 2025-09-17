@@ -4,8 +4,10 @@ namespace App\Livewire;
 
 use App\Models\Project;
 use App\Models\Setting;
+use Livewire\Attributes\Title;
 use Livewire\Component;
 
+#[Title(content: 'Home Page - Dev.Sadi')]
 class HomePage extends Component
 {
     public function render()

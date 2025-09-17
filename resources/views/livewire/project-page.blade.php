@@ -5,7 +5,7 @@
             <h2>{{ $settings->copyright_holder }}.<span class="pink">projects</span></h2>
         </div>
         <p class="section-description">
-            See <a wire:navigate class="hyperlink" href="{{ $settings->githup }}">GitHub</a>
+            See <a class="hyperlink" href="{{ $settings->githup }}">GitHub</a>
             profile for more details.
         </p>
         <div class="project-cards-container">
@@ -45,6 +45,12 @@
             @endforeach
 
 
+        </div>
+        <div class="cta-container">
+            <a href="{{ $settings->githup }}" class="cta">
+                <img src="{{ asset('css/website/img/coding.svg') }}" alt="Exploar More">
+                <span>Explore More</span>
+            </a>
         </div>
     </section>
 </div>

@@ -62,7 +62,8 @@
             <h2>Select Projects</h2>
             <p class="section-description">
                 Here are some personal projects I have worked on.<br>
-                You can find more on <a class="hyperlink" href="{{ $setting->githup }}">GitHub</a>.
+                You can find more on
+                 <a class="hyperlink" href="{{ $setting->githup }}">GitHub</a>.
             </p>
             <div class="project-cards-container">
 

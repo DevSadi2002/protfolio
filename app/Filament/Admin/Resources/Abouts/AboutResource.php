@@ -22,6 +22,16 @@ class AboutResource extends Resource
 
     protected static ?string $recordTitleAttribute = 'صفحة التوصيف';
 
+
+    public static function getModelLabel(): string
+    {
+        return 'توصيف';
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return 'تصويف   ';
+    }
     public static function form(Schema $schema): Schema
     {
         return AboutForm::configure($schema);

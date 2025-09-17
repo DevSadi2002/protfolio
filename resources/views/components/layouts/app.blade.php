@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Annie Wu</title>
+    <title>{{ $title ?? 'Dev.Sadi' }}</title>
 
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -10,26 +10,33 @@
     <link rel="manifest" href="/site.webmanifest">
 
     <meta charset="UTF-8">
-
-    <meta property="og:title" content="Annie Wu" />
+    <!-- Open Graph / Facebook -->
+    <meta property="og:title" content="Dev.Sadi – Full Stack Web Developer" />
     <meta property="og:type" content="website" />
-    {{-- <meta property="og:url" content="http://anniew.xyz" /> --}}
-    <meta property="og:description" content="Hi! I'm Annie." />
+    <meta property="og:url" content="https://devsadi.com" />
+    <meta property="og:description"
+        content="Hi! I'm Dev.Sadi, a passionate Full Stack Web Developer specializing in Laravel and modern web technologies." />
     <meta property="og:locale" content="en_US" />
-    <meta property="og:image" content="https://anniew.xyz/img/me-icon-smiling.png" />
+    <meta property="og:image" content="https://devsadi.com/img/profile.png" />
 
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Annie Wu">
-    <meta name="twitter:description" content="Hi! I'm Annie.">
-    <meta name="twitter:image" content="https://anniew.xyz/img/me-icon-smiling.png">
-    <meta name="twitter:site" content="@anniedotexe">
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Dev.Sadi – Full Stack Web Developer">
+    <meta name="twitter:description"
+        content="Hi! I'm Dev.Sadi, a passionate Full Stack Web Developer specializing in Laravel and modern web technologies.">
+    <meta name="twitter:image" content="https://devsadi.com/img/profile.png">
+    <meta name="twitter:site" content="@DevSadi">
 
+    <!-- General Meta -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="copyright" content="Annie Wu">
-    <meta name="description" content="Hi! I'm Annie.">
+    <meta name="copyright" content="Dev.Sadi">
+    <meta name="description"
+        content="Hi! I'm Dev.Sadi, a Full Stack Web Developer. I build responsive and modern websites using Laravel, Livewire, and more.">
     <meta name="keywords"
-        content="Annie Wu, Annie Wu Portfolio, Annie Wu Photography, photographer, developer, java, python, html, css, javascript, web developer, webdev, portfolio, quality assurance, qa engineer, quality assurance engineer">
-    <meta name="robots" content="noindex, nofollow" />
+        content="Dev.Sadi, Web Developer, Laravel, Livewire, Full Stack, HTML, CSS, JavaScript, PHP, Portfolio, QA Engineer">
+
+    <!-- SEO / Robots -->
+    <meta name="robots" content="index, follow">
 
     {{-- <link rel="canonical" href="https://anniew.xyz" /> --}}
 
@@ -59,7 +66,7 @@
     {{ $slot }}
 
 
-        @include('components.layouts.footer')
+    @include('components.layouts.footer')
 
 
     {{-- Scripts pacess --}}

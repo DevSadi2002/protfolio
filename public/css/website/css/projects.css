@@ -80,6 +80,7 @@ em {
 }
 
 .project-skills {
+    border-radius: 5px;
     margin-bottom: 12px;
     padding-bottom: 12px;
     border-bottom: 1px solid #7EB77F;
