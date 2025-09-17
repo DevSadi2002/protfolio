@@ -2,6 +2,7 @@
 
 namespace App\Providers\Filament;
 
+use Andreia\FilamentNordTheme\FilamentNordThemePlugin;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -29,8 +30,12 @@ class AdminPanelProvider extends PanelProvider
             ->path('admin')
             ->login()
             ->colors([
-                // 'primary' => Color::Amber,
+                'primary' => '#1D263B',   // الأزرق الغامق الأساسي للخلفيات
+                'success' => '#7EB77F',   // الأخضر (يدل على نجاح/إيجابي)
+                'danger'  => '#F08CAE',   // الوردي/الأحمر (يدل على تحذير/خطر)
+                'neutral' => '#FFFFFF',   // الأبيض للنصوص أو خلفية محايدة
             ])
+
             ->discoverResources(in: app_path('Filament/Admin/Resources'), for: 'App\Filament\Admin\Resources')
             ->discoverPages(in: app_path('Filament/Admin/Pages'), for: 'App\Filament\Admin\Pages')
             ->pages([
@@ -57,7 +62,8 @@ class AdminPanelProvider extends PanelProvider
             ])
 
             ->plugins([
-                FilamentAwinTheme::make(),
+                // FilamentAwinTheme::make(),
+                FilamentNordThemePlugin::make(),
             ]);
     }
 }

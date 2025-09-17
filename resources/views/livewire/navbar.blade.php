@@ -5,7 +5,7 @@
           <ul class="nav-menu">
               <li class="nav-item"><a wire:navigate href="/about">About</a></li>
               <li class="nav-item"><a wire:navigate href="/projects">Projects</a></li>
-              <li class="nav-item"><a wire:navigate href="/projects">language</a></li>
+              {{-- <li class="nav-item"><a wire:navigate href="/projects">language</a></li> --}}
               {{-- <li class="nav-item"><a wire:navigate href="https://anniedotexe.mypixieset.com/">Photos</a> --}}
               </li>
           </ul>

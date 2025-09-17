@@ -37,6 +37,18 @@ class SettingForm
                                     TextInput::make('copyright_holder')
                                         ->label('صاحب الحقوق')
                                         ->required(),
+                                    TextInput::make('job')
+                                        ->label('المسمى الوظيفي')
+                                        ->required(),
+                                    TextInput::make('compane_job')
+                                        ->label('الشركة التي تعمل فيها حالياً'),
+                                    TextInput::make('job_link')
+                                        ->label('رابط الشركة التي تعمل فيها حالياً')
+                                        ->url()
+                                        ->nullable(),
+                                    TextInput::make('copyright_holder')
+                                        ->label('صاحب الحقوق')
+                                        ->required(),
                                     TextInput::make('copyright_start')
                                         ->label('سنة البداية')
                                         ->numeric()

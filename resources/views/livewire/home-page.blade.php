@@ -4,8 +4,15 @@
             <div class="landing-page-details">
                 <h1 class="small-title">Hi,</h1>
                 <h2 class="big-title">I'm <span class="my-name pink">{{ $setting->copyright_holder }}</span></h2>
-                <h3 class="medium-title"><em>Web developer @ <a class="pink"
-                            href="https://get.popmenu.com/">GAZA</a></em>
+                <h3 class="medium-title"><em>{{ $setting->job }} @
+                        @if ($setting->compane_job)
+                            <a class="pink" href="{{ $setting->link_job }}">
+                                {{ $setting->compane_job }}
+                            </a>
+                    </em>
+                @else
+                    <a wire:navigate class="pink" href="/">Freelance</a></em>
+                    @endif
                 </h3>
                 @if ($setting->description !== null)
                     <div class="short-bio">
@@ -63,7 +70,7 @@
             <p class="section-description">
                 Here are some personal projects I have worked on.<br>
                 You can find more on
-                 <a class="hyperlink" href="{{ $setting->githup }}">GitHub</a>.
+                <a class="hyperlink" href="{{ $setting->githup }}">GitHub</a>.
             </p>
             <div class="project-cards-container">
 

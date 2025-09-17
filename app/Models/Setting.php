@@ -17,6 +17,9 @@ class Setting extends Model
     protected $fillable = [
         'description',
         'email',
+        'job',
+        'link_job',
+        'compane_job',
         'instgram',
         'linkedin',
         'githup',

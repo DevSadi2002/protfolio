@@ -62,10 +62,17 @@ class ProjectsTable
             ])
             ->recordActions([
                 ActionGroup::make([
-                    ViewAction::make(),
-                    EditAction::make(),
-                    DeleteAction::make(),
-                ])
+                    ViewAction::make()
+                        ->label('عرض')
+                        ->icon('heroicon-o-eye'),
+                    EditAction::make()
+                        ->label('تعديل')
+                        ->icon('heroicon-o-pencil'),
+                    DeleteAction::make()
+                        ->label('حذف')
+                        ->icon('heroicon-o-trash')
+                        ->requiresConfirmation(),
+                ]),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([

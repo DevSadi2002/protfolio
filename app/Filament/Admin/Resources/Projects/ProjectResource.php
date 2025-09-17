@@ -7,6 +7,7 @@ use App\Filament\Admin\Resources\Projects\Pages\EditProject;
 use App\Filament\Admin\Resources\Projects\Pages\ListProjects;
 use App\Filament\Admin\Resources\Projects\Schemas\ProjectForm;
 use App\Filament\Admin\Resources\Projects\Tables\ProjectsTable;
+use App\Filament\Admin\Resources\Projects\Widgets\ProjectOverview;
 use App\Models\Project;
 use BackedEnum;
 use Filament\Resources\Resource;
@@ -30,6 +31,13 @@ class ProjectResource extends Resource
     public static function getPluralModelLabel(): string
     {
         return 'المشاريع';
+    }
+
+    public static function getWidgets(): array
+    {
+        return [
+            ProjectOverview::class,
+        ];
     }
 
     public static function form(Schema $schema): Schema
