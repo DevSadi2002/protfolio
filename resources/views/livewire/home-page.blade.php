@@ -65,6 +65,9 @@
                 </ul>
             </div>
         </section>
+
+
+
         <section class="projects" id="select-projects">
             <h2>Select Projects</h2>
             <p class="section-description">
@@ -75,7 +78,7 @@
             <div class="project-cards-container">
 
                 @foreach ($project as $projects)
-                    <div class="card">
+                    <div class="card" tabindex="0" role="button" aria-expanded="false">
                         <img src="{{ url('storage', $projects->image) }}" alt="Project Preview Screenshot"
                             class="card-preview-img">
                         <div class="card-info">
@@ -94,7 +97,6 @@
                                             <i class="fa-brands fa-github"></i>
                                         </a>
                                     @endif
-
                                 </div>
                             </div>
                             <div class="project-skills">
@@ -104,23 +106,31 @@
                                     </span>
                                 @endforeach
                             </div>
-                            <p class="project-description">
+
+                            <!-- short/truncated description shown by default -->
+                            <p class="project-description truncated">
                                 {{ Str::limit(value: $projects->description, limit: 200) }}
-                                {{-- {{ $projects->description }} --}}
+                            </p>
+
+                            <!-- full description hidden by default, revealed on hover/click -->
+                            <p class="project-description full">
+                                {{ $projects->description }}
                             </p>
 
                         </div>
                     </div>
                 @endforeach
+
             </div>
 
-        </section>
-        <div class="cta-container">
-            <a wire:navigate href="/projects" class="cta">
-                <img src="{{ asset('css/website/img/coding.svg') }}" alt="Exploar More">
-                <span>Explore More</span>
-            </a>
-        </div>
+            <!-- include the JS (adjust path if using mix/asset pipeline) -->
+            <script src="{{ asset('css/website/js/project-card.js') }}"></script>
+            <div class="cta-container">
+                <a wire:navigate href="/projects" class="cta">
+                    <img src="{{ asset('css/website/img/coding.svg') }}" alt="Explore More">
+                    <span>Explore More</span>
+                </a>
+            </div>
     </main>
 
 </div>

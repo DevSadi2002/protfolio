@@ -29,6 +29,7 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->login()
+            ->registration()
             ->colors([
                 'primary' => '#1D263B',   // الأزرق الغامق الأساسي للخلفيات
                 'success' => '#7EB77F',   // الأخضر (يدل على نجاح/إيجابي)

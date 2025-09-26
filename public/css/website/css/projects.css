@@ -1,3 +1,4 @@
+/* ---------- original styles (kept) ---------- */
 em {
     color: #1D263B;
 }
@@ -11,14 +12,28 @@ em {
     margin-top: 50px;
     height: fit-content;
     height: -moz-fit-content;
+    /* allow scaled cards to overflow the container */
+    overflow: visible;
+    -webkit-overflow-scrolling: touch;
 }
 
+/* card base */
 .card {
     display: inline-flex;
     flex-direction: column;
     color: #1D263B;
+    vertical-align: top;
+    /* make each card atomic for column layout */
+    break-inside: avoid;
+    -webkit-column-break-inside: avoid;
+    page-break-inside: avoid;
+    /* transform + shadow transition */
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    transform-origin: center top;
+    position: relative;
 }
 
+/* spacing between cards */
 .card:not(:last-child) {
     margin: 0 auto 2em auto;
 }
@@ -99,11 +114,68 @@ em {
 
 .project-description {
     color: #1D263B;
+    margin: 0;
 }
 
+/* ---------- new/interactive styles ---------- */
+
+/* hide full description by default */
+.project-description.full {
+    display: none;
+    white-space: normal;
+}
+
+/* show full description and hide truncated on hover or when .expanded is set */
+.card:hover,
+.card.expanded {
+    /* target scaling amount here; for example scale(1.5) will grow 150% */
+    transform: scale(1.5);
+    z-index: 50;
+    box-shadow: 0 12px 30px rgba(13, 18, 35, 0.18);
+}
+
+/* keep cursor pointer for clickable accessibility */
+.card[role="button"] {
+    cursor: pointer;
+}
+
+/* when scaled/expanded, show full text and hide truncated */
+.card:hover .truncated,
+.card.expanded .truncated {
+    display: none;
+}
+
+.card:hover .full,
+.card.expanded .full {
+    display: block;
+}
+
+/* small tweak: reduce transform on narrower screens or disable to avoid layout issues */
+@media only screen and (max-width: 767px) {
+    .card:hover,
+    .card.expanded {
+        transform: none;
+        box-shadow: none;
+    }
+
+    /* keep full description visible on small screens when expanded (or on tap) */
+    .card.expanded .truncated {
+        display: none;
+    }
+    .card.expanded .full {
+        display: block;
+    }
+}
+
+/* two-column layout on larger screens (kept) */
 @media only screen and (min-width: 768px) {
     .project-cards-container {
         column-count: 2;
         column-gap: 2em;
+    }
+
+    /* ensure cards take full column width */
+    .card {
+        width: 100%;
     }
 }
