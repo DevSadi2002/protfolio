@@ -126,6 +126,13 @@
                                 </div>
                             </div>
                             <div class="project-skills">
+                                {{--
+                                    @foreach ($projects->project_skills as $skill)
+                                        <span class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded mr-1">
+                                            {{ $skill }}
+                                        </span>
+                                    @endforeach
+                                --}}
                                 @foreach ($projects->project_skills as $skill)
                                     <span class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded mr-1">
                                         {{ $skill }}

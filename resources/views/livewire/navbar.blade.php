@@ -6,7 +6,8 @@
 
         <ul class="nav-menu">
             <li class="nav-item"><a wire:navigate href="/about" data-i18n="nav.about">{{ __('page.nav.about') }}</a></li>
-            <li class="nav-item"><a wire:navigate href="/projects" data-i18n="nav.projects">{{ __('page.nav.projects') }}</a>
+            <li class="nav-item"><a wire:navigate href="/projects"
+                    data-i18n="nav.projects">{{ __('page.nav.projects') }}</a>
             </li>
             <li class="nav-item"><a wire:navigate href="https://anniedotexe.mypixieset.com/"
                     data-i18n="nav.photos">{{ __('page.nav.photos') }}</a></li>
@@ -17,7 +18,7 @@
     <!-- user avatar button (ضعه في اليمين في نفس السطر) -->
     <div class="user-wrap">
         <button id="userBtn" class="user-btn" aria-haspopup="true" aria-expanded="false" aria-controls="userDropdown">
-            <img src="{{ Auth::user()->avatar ?? asset('css/website/img/me-icon.png') }}" alt="User avatar"
+            <img src="{{ Auth::user()->avatar ?? asset('css/website/img/me-icons.png') }}" alt="User avatar"
                 class="user-avatar">
         </button>
 
