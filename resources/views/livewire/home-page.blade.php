@@ -3,7 +3,7 @@
         <section id="home">
             <div class="landing-page-details">
                 @if (app()->getLocale() === 'ar')
-                    <h1 class="small-title">مرحباً</h1>
+                    <h1 class="small-title"> مرحباً في معرض اعمالي المتواضع...</h1>
                     <h2 class="big-title">أنا <span class="my-name pink">{{ $setting->copyright_holder }}</span></h2>
                     <h3 class="medium-title"><em>{{ $setting->job }} @
                             @if ($setting->compane_job)
@@ -87,7 +87,7 @@
         <section class="projects" id="select-projects">
             @if (app()->getLocale() === 'ar')
                 <h2>معرض المشاريع</h2>
-                 <p class="section-description">
+                <p class="section-description">
                     هنا بعض المشاريع الشخصية التي عملت عليها.
                     يمكنك العثور على المزيد على
                     <a class="hyperlink" href="{{ $setting->githup }}">GitHub</a>.

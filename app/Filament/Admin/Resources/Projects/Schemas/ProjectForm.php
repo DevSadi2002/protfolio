@@ -33,8 +33,10 @@ class ProjectForm
                             TagsInput::make('project_skills')
                                 ->label('المهارات المستخدمة')
                                 ->placeholder('أضف المهارات هنا')
-                                ->separator(',') // يفرق القيم بالفاصلة
-                                ->suggestions(['Laravel', 'Livewire', 'Tailwind', 'Vue', 'React']),
+                                ->separator(',')
+                                ->suggestions(['Laravel', 'Livewire', 'Tailwind', 'Vue', 'React'])
+                                // عند الحفظ اترك المصفوفة كما هي ودع الـ Eloquent casts يتعامل مع التحويل إلى JSON
+                                ->dehydrateStateUsing(fn($state) => is_array($state) ? array_values($state) : $state),
                             MarkdownEditor::make('description')
                                 ->label('وصف المشروع')
                                 ->columnSpanFull()
