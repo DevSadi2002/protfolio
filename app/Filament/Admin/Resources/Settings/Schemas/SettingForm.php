@@ -9,6 +9,7 @@ use Filament\Forms\Components\Toggle;
 use Filament\Schemas\Components\Flex;
 use Filament\Schemas\Components\Grid;
 use Filament\Schemas\Components\Section;
+use Filament\Schemas\Components\Tabs;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 
@@ -87,9 +88,21 @@ class SettingForm
                                 ->description('معلومات إضافية عن الموقع')
                                 ->icon(Heroicon::InformationCircle)
                                 ->schema([
-                                    MarkdownEditor::make('description')
-                                        ->label('وصف المشروع')
-                                        ->placeholder('اكتب تفاصيل عنك...'),
+                                    Tabs::make('Translations')
+                                        ->tabs([
+                                            Tabs\Tab::make('العربية')
+                                                ->schema([
+                                                    MarkdownEditor::make('description.ar')
+                                                        ->label('الوصف بالعربية')
+                                                        ->placeholder('اكتب تفاصيل عنك...'),
+                                                ]),
+                                            Tabs\Tab::make('English')
+                                                ->schema([
+                                                    MarkdownEditor::make('description.en')
+                                                        ->label('Description in English')
+                                                        ->placeholder('Write details about you...'),
+                                                ]),
+                                        ]),
                                     TextInput::make('email')
                                         ->email()
                                         ->label('البريد الإلكتروني'),

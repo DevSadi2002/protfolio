@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('settings', function (Blueprint $table) {
             $table->id();
 
-            $table->text('description')->nullable();
+            $table->json('description')->nullable();
             $table->string('email')->nullable();
 
             // لينكات التواصل الاجتماعي

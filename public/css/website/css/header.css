@@ -1,3 +1,4 @@
+/* --- الأصل (نسخة مدمجة من كودك الأصلي) --- */
 a {
     text-decoration: none;
 }
@@ -21,6 +22,7 @@ header {
     padding: 10px;
     font-size: 1.2em;
     letter-spacing: 0.05em;
+    color: #FFFFFF;
 }
 
 .nav-menu {
@@ -31,6 +33,12 @@ header {
     flex-direction: column;
     align-items: center;
     left: 0;
+    margin: 0;
+    padding: 0;
+    top: 70px;
+    background: #ffffff;
+    width: 100vw;
+    transition: transform 220ms ease;
 }
 
 .nav-item {
@@ -48,7 +56,8 @@ header {
     color: #1D263B;
 }
 
-.nav-item a:hover, .nav-item a:focus {
+.nav-item a:hover,
+.nav-item a:focus {
     color: #F08CAE;
     text-decoration: underline;
 }
@@ -67,8 +76,137 @@ header {
 
 .toggle i {
     font-size: 2em;
+    color: #FFFFFF;
 }
 
+/* --- إضافات User avatar + dropdown --- */
+.user-wrap {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    margin-left: 12px;
+}
+
+.user-btn {
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(255, 255, 255, 0.12);
+    transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.user-btn:focus .user-avatar,
+.user-btn:hover .user-avatar {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+}
+
+/* dropdown panel */
+.user-dropdown {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 8px);
+    min-width: 220px;
+    background: rgba(13, 18, 35, 0.12);
+    border-radius: 8px;
+    box-shadow: 0 14px 36px rgba(13, 18, 35, 0.12);
+    padding: 8px;
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    transform-origin: top right;
+    transition: transform 150ms ease, opacity 150ms ease;
+    opacity: 0;
+    z-index: 40;
+}
+
+/* show */
+.user-dropdown.show {
+    display: flex;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* dropdown items */
+.user-dropdown-item {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    gap: 10px;
+    padding: 8px 10px;
+    border-radius: 6px;
+    color: #1D263B;
+    text-decoration: none;
+    background: transparent;
+    border: none;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.user-dropdown-item:hover {
+    background: #3f715d;
+    color: #0f7a4f;
+}
+
+.dropdown-divider {
+    height: 1px;
+    background: #eee;
+    margin: 6px 0;
+}
+
+/* language buttons */
+.lang-switcher {
+    display: flex;
+    gap: 6px;
+    padding: 6px;
+    justify-content: flex-end;
+}
+
+.lang-btn {
+    min-width: 40px;
+    height: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    font-weight: 800;
+    font-size: 0.95rem;
+    color: #1D263B;
+    background: #fff;
+    border: 1px solid #e6e6e6;
+}
+
+.lang-btn[aria-pressed="true"] {
+    background: #0f7a4f;
+    color: #fff;
+    border-color: transparent;
+}
+
+/* RTL adjustments when Arabic selected */
+:root[lang="ar"] .nav-menu {
+    direction: rtl;
+}
+
+:root[lang="ar"] .user-dropdown {
+    direction: rtl;
+    text-align: right;
+    font-family: "Segoe UI", Tahoma, "Noto Naskh Arabic", "Arial", sans-serif;
+}
+
+/* --- responsive (احتفظت بشروطك الأصلية) --- */
 @media only screen and (min-width: 768px) {
     .nav {
         display: flex;
@@ -76,6 +214,7 @@ header {
         justify-content: space-between;
         align-items: center;
     }
+
     .nav-menu {
         position: relative;
         align-items: center;
@@ -83,7 +222,11 @@ header {
         background-color: #1D263B;
         height: fit-content;
         height: -moz-fit-content;
+        top: auto;
+        left: auto;
+        width: auto;
     }
+
     .nav-item {
         position: relative;
         display: block;
@@ -91,12 +234,26 @@ header {
         width: -moz-fit-content;
         margin: 0;
     }
+
     .nav-item a {
         width: fit-content;
         width: -moz-fit-content;
         color: #FFFFFF;
     }
+
     .toggle {
         display: none;
+    }
+
+    /* ensure user dropdown aligns correctly on desktop */
+    .user-dropdown {
+        top: calc(100% + 8px);
+    }
+}
+
+/* on mobile, ensure dropdown appears above the nav menu overlay */
+@media only screen and (max-width: 767px) {
+    .user-dropdown {
+        right: 10px;
     }
 }

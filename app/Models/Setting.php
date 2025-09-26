@@ -4,13 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Translatable\HasTranslations;
 
 class Setting extends Model
 {
     //
 
     use HasFactory;
-
+    use HasTranslations;
     protected $table = 'settings';
     // protected $guarded  = [];
 
@@ -29,9 +30,12 @@ class Setting extends Model
         'copyright_start',
         'copyright_end',
     ];
-    // protected $casts = [
-    //     'social_links' => 'array', // يحول JSON إلى Array تلقائي
-    // ];
+
+    protected $casts = [
+        'description' => 'array', // يحول JSON إلى Array تلقائي
+    ];
+    public $translatable = ['description'];
+
     public static function booted()
     {
         static::creating(function ($setting) {

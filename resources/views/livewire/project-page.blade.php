@@ -33,7 +33,7 @@
                             </div>
                         </div>
                         <div class="project-skills">
-                            @foreach (explode(',', $projects->project_skills) as $skills)
+                            @foreach ($projects->project_skills as $skills)
                                 <span>{{ $skills }}</span>
                             @endforeach
                         </div>

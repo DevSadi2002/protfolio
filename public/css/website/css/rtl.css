@@ -1,0 +1,67 @@
+/* rtl.css
+   Overrides بسيطة لتفعيل RTL بدون إعادة تصميم كبيرة.
+   يستهدف html[dir="rtl"] أو :root[lang="ar"].
+*/
+
+html[dir="rtl"], :root[lang="ar"] {
+  direction: rtl;
+}
+
+/* نصوص ومحاذاة عامة */
+html[dir="rtl"] .landing-page-details,
+html[dir="rtl"] .small-title,
+html[dir="rtl"] .big-title,
+html[dir="rtl"] h3,
+html[dir="rtl"] .short-bio p,
+html[dir="rtl"] .project-title,
+html[dir="rtl"] .project-skills,
+html[dir="rtl"] .project-description,
+html[dir="rtl"] .section-description {
+  text-align: right;
+}
+
+/* swap mobile nav position (كان left:0) */
+html[dir="rtl"] .nav-menu {
+  left: auto;
+  right: 0;
+}
+
+/* إذا لديك paddings/margins محددة جهة اليسار/اليمين، استخدم تبديل بسيط */
+html[dir="rtl"] .user-wrap {
+  margin-left: 0;
+  margin-right: 12px; /* بدل margin-left في التصميم الأصلي */
+}
+
+/* تعديل زر CTA: بدل المسافة على اليسار خليها على اليمين */
+html[dir="rtl"] .cta span {
+  margin-left: 0;
+  margin-right: 10px;
+}
+
+/* عكس ترتيب أزرار اللغة داخل الدروبداون */
+html[dir="rtl"] .lang-switcher {
+  flex-direction: row-reverse;
+}
+
+/* dropdown panel: تأكد اتجاهها وقراءة النص */
+html[dir="rtl"] .user-dropdown {
+  direction: rtl;
+    right: 0;
+  text-align: right;
+}
+
+/* تحسين أي أيقونات اجتماعية: اجعلها على الجانب الأيمن في السطور العريضة */
+@media only screen and (min-width: 768px) {
+  html[dir="rtl"] .landing-page-socials ul {
+    align-items: flex-end;
+  }
+}
+
+/* تأكد أن القوائم والبطاقات لا تتأثر كثيراً */
+html[dir="rtl"] .project-cards-container {
+  /* لا حاجة لتبديل أعمدة، نحافظ على نفس العرض لكن اتجاه النص باتجاه اليمين */
+  column-fill: balance;
+}
+
+/* قواعد سريعة لحالات خاصة (إن كان لديك قواعد محددة تظهر بوضوح في DevTools) */
+/* مثال: لو اشترطت وجود left: X في أي عنصر، بدّلها هنا فقط */

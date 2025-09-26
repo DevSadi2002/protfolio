@@ -1,7 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html dir="{{ app()->getLocale() == 'ar' ? 'rtl' : 'ltr' }}"
+    lang ="{{ str_replace(search: '_', replace: '-', subject: app()->getLocale()) }}">
+    {{-- lang="ar"> --}}
+    {{-- @dd(app()->getLocale()) --}}
+@if (app()->getLocale() == 'ar')
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;700;900&display=swap"
+        rel="stylesheet">
+@endif
 
 <head>
+
+
     <title>{{ $title ?? 'Dev.Sadi' }}</title>
 
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -52,6 +66,8 @@
     <link rel="stylesheet" href="{{ asset('css/website/css/home.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('css/website/css/projects.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('css/website/css/footer.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('css/website/css/rtl.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('css/website/css/rtl-fixes.css') }}" type="text/css">
     {{-- @vite(['resources/js/app.js', ['resources/css/app.css']]) --}}
     @vite(['resources/js/app.js'])
     @livewireStyles
@@ -72,6 +88,8 @@
     {{-- Scripts pacess --}}
     {{-- <script src="{{ asset('min') }}"></script> --}}
     <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.6.2/dist/dotlottie-wc.js" type="module"></script>
+    <script src="{{ asset('css/website/js/header-dropdown.js') }}" defer></script>
+
     @livewireScripts
 </body>
 

@@ -20,6 +20,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        app()->setLocale(session('locale', config('app.locale')));
+
         //
         LanguageSwitch::configureUsing(function (LanguageSwitch $switch) {
             $switch

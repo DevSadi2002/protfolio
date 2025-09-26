@@ -1,7 +1,21 @@
-<div wire:poll>
+<div>
     <main class="main-container home-section">
         <section id="home">
             <div class="landing-page-details">
+                @if (app()->getLocale() === 'ar')
+                    <h1 class="small-title">مرحباً</h1>
+                    <h2 class="big-title">أنا <span class="my-name pink">{{ $setting->copyright_holder }}</span></h2>
+                    <h3 class="medium-title"><em>{{ $setting->job }} @
+                            @if ($setting->compane_job)
+                                <a class="pink" href="{{ $setting->link_job }}">
+                                    {{ $setting->compane_job }}
+                                </a>
+                        </em>
+                    @else
+                        <a wire:navigate class="pink" href="/">Freelance</a></em>
+                @endif
+                </h3>
+            @elseif (app()->getLocale() === 'en')
                 <h1 class="small-title">Hi,</h1>
                 <h2 class="big-title">I'm <span class="my-name pink">{{ $setting->copyright_holder }}</span></h2>
                 <h3 class="medium-title"><em>{{ $setting->job }} @
@@ -12,15 +26,17 @@
                     </em>
                 @else
                     <a wire:navigate class="pink" href="/">Freelance</a></em>
-                    @endif
+                </h3>
+                @endif
+                @endif
+
                 </h3>
                 @if ($setting->description !== null)
                     <div class="short-bio">
-                        <p>
-                            {{ $setting->description }}
-                        </p>
+                        <p>{{ $setting->getTranslation('description', app()->getLocale()) }}</p>
                     </div>
                 @endif
+
 
             </div>
             {{-- // avatar Icon --}}
@@ -69,12 +85,22 @@
 
 
         <section class="projects" id="select-projects">
-            <h2>Select Projects</h2>
-            <p class="section-description">
-                Here are some personal projects I have worked on.<br>
-                You can find more on
-                <a class="hyperlink" href="{{ $setting->githup }}">GitHub</a>.
-            </p>
+            @if (app()->getLocale() === 'ar')
+                <h2>معرض المشاريع</h2>
+                 <p class="section-description">
+                    هنا بعض المشاريع الشخصية التي عملت عليها.
+                    يمكنك العثور على المزيد على
+                    <a class="hyperlink" href="{{ $setting->githup }}">GitHub</a>.
+                </p>
+            @else
+                <h2>Select Projects</h2>
+                <p class="section-description">
+                    Here are some personal projects I have worked on.
+                    <br>
+                    You can find more on
+                    <a class="hyperlink" href="{{ $setting->githup }}">GitHub</a>.
+                </p>
+            @endif
             <div class="project-cards-container">
 
                 @foreach ($project as $projects)
@@ -100,7 +126,7 @@
                                 </div>
                             </div>
                             <div class="project-skills">
-                                @foreach (explode(',', $projects->project_skills) as $skill)
+                                @foreach ($projects->project_skills as $skill)
                                     <span class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded mr-1">
                                         {{ $skill }}
                                     </span>
