@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html dir="{{ app()->getLocale() == 'ar' ? 'rtl' : 'ltr' }}"
     lang ="{{ str_replace(search: '_', replace: '-', subject: app()->getLocale()) }}">
-    {{-- lang="ar"> --}}
-    {{-- @dd(app()->getLocale()) --}}
+{{-- lang="ar"> --}}
+{{-- @dd(app()->getLocale()) --}}
 @if (app()->getLocale() == 'ar')
     <style>
         body {
@@ -68,6 +68,8 @@
     <link rel="stylesheet" href="{{ asset('css/website/css/footer.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('css/website/css/rtl.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('css/website/css/rtl-fixes.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('css/website/css/header-dropdown.css') }}">
+
     {{-- @vite(['resources/js/app.js', ['resources/css/app.css']]) --}}
     @vite(['resources/js/app.js'])
     @livewireStyles
