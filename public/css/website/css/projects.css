@@ -1,0 +1,186 @@
+/* Updated styles: softer, subtle expansion to reveal full details */
+
+/* ---------- original/kept styles ---------- */
+em {
+    color: #1D263B;
+}
+
+.projects {
+    padding-top: 100px;
+    max-width: 1200px;
+}
+
+.project-cards-container {
+    margin-top: 50px;
+    height: fit-content;
+    height: -moz-fit-content;
+    overflow: visible;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* card base */
+.card {
+    display: inline-flex;
+    flex-direction: column;
+    color: #1D263B;
+    vertical-align: top;
+    break-inside: avoid;
+    -webkit-column-break-inside: avoid;
+    page-break-inside: avoid;
+    transition: transform 220ms cubic-bezier(.2,.9,.2,1), box-shadow 220ms cubic-bezier(.2,.9,.2,1);
+    transform-origin: center top;
+    position: relative;
+    will-change: transform;
+}
+
+/* spacing between cards */
+.card:not(:last-child) {
+    margin: 0 auto 2em auto;
+}
+
+.card-preview-img {
+    max-width: 100%;
+    border-radius: 10px 10px 0 0;
+    padding: 5px;
+    background-color: white;
+}
+
+.card-info {
+    padding: 25px;
+    background-color: #FFFFFF;
+    border-radius: 0 0 10px 10px;
+}
+
+.has-no-preview .card-info {
+    border-radius: 10px;
+}
+
+.title-and-links {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.project-title {
+    font-size: 1.2em;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: #1D263B;
+}
+
+.project-links {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.project-links a i {
+    padding: 5px;
+}
+
+.project-links a i {
+    color: #F08CAE;
+    font-size: 1.2em;
+    transition: all 0.2s ease;
+}
+
+.project-links a i:hover {
+    font-size: 1.25em;
+    padding: 2px 5px;
+    color: #7EB77F;
+}
+
+.project-links a:last-child {
+    margin-left: 5px;
+}
+
+.project-skills {
+    border-radius: 5px;
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #7EB77F;
+}
+
+.project-skills span {
+    color: #0FA3B1;
+    font-weight: 700;
+    font-size: 0.9em;
+    letter-spacing: 0.05em;
+}
+
+.project-skills span:not(:last-child) {
+    margin-right: 10px;
+}
+
+.project-description {
+    color: #1D263B;
+    margin: 0;
+    line-height: 1.45;
+}
+
+/* hide full description by default */
+.project-description.full {
+    display: none;
+    white-space: normal;
+}
+
+/* ---------- softer expansion (small, smooth, revealing content) ---------- */
+
+/* subtle expand: small scale and slight lift so it feels natural */
+.card:hover,
+.card.expanded {
+    transform: scale(1.06) translateY(-6px);
+    z-index: 120;
+    box-shadow: 0 18px 40px rgba(13, 18, 35, 0.12);
+}
+
+/* cursor for interactive cards */
+.card[role="button"] {
+    cursor: pointer;
+}
+
+/* show full description and hide truncated when hovered/expanded */
+.card:hover .truncated,
+.card.expanded .truncated {
+    display: none;
+}
+
+.card:hover .full,
+.card.expanded .full {
+    display: block;
+}
+
+/* Prevent awkward overflow: keep the expanded card visible but bounded by viewport */
+.card.expanded {
+    /* ensure the card doesn't grow beyond viewport width */
+    max-width: calc(100vw - 40px);
+}
+
+/* mobile: disable scale but still allow tap-to-expand (shows full text) */
+@media only screen and (max-width: 767px) {
+    .card:hover,
+    .card.expanded {
+        transform: none;
+        box-shadow: 0 6px 18px rgba(13, 18, 35, 0.08);
+        z-index: 100;
+    }
+
+    .card.expanded .truncated {
+        display: none;
+    }
+    .card.expanded .full {
+        display: block;
+    }
+}
+
+/* two-column layout on larger screens */
+@media only screen and (min-width: 768px) {
+    .project-cards-container {
+        column-count: 2;
+        column-gap: 2em;
+    }
+
+    .card {
+        width: 100%;
+    }
+}
