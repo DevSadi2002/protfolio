@@ -145,10 +145,7 @@
                                 {{ Str::limit(value: $projects->description, limit: 200) }}
                             </p>
 
-                            <!-- full description hidden by default, revealed on hover/click -->
-                            <p class="project-description full">
-                                {{ $projects->description }}
-                            </p>
+                          
 
                         </div>
                     </div>
