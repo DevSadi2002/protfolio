@@ -18,7 +18,7 @@
     <!-- user avatar button (ضعه في اليمين في نفس السطر) -->
     <div class="user-wrap">
         <button id="userBtn" class="user-btn" aria-haspopup="true" aria-expanded="false" aria-controls="userDropdown">
-            <img src="{{ Auth::user()->avatar ?? asset('css/website/img/me-icons.png') }}" alt="User avatar"
+            <img src="{{ Auth::user()->avatar ?? asset('css/website/img/me-icon.png') }}" alt="User avatar"
                 class="user-avatar">
         </button>
 
@@ -26,7 +26,7 @@
             <label for="avatarInput" class="user-dropdown-item" role="menuitem">
                 <i class="fas fa-camera"></i>
                 <span data-i18n="menu.change_photo">
-                    {{ __('page.menu.change_photo') }}
+                    {{ __(key: 'page.menu.change_photo') }}
                 </span>
             </label>
 
