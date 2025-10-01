@@ -158,12 +158,21 @@
 
             <!-- include the JS (adjust path if using mix/asset pipeline) -->
             <script src="{{ asset('css/website/js/project-card.js') }}"></script>
-            <div class="cta-container">
-                <a wire:navigate href="/projects" class="cta">
-                    <img src="{{ asset('css/website/img/coding.svg') }}" alt="Explore More">
-                    <span>Explore More</span>
-                </a>
-            </div>
+            @if (app()->getLocale() === 'ar')
+                <div class="cta-container">
+                    <a wire:navigate href="/projects" class="cta">
+                        <span >{{ __('page.home_page.explore_more') }}</span>
+                        <img style="margin-right: 10px" src="{{ asset('css/website/img/coding.svg') }}" alt="Explore More">
+                    </a>
+                </div>
+            @else
+                <div class="cta-container">
+                    <a wire:navigate href="/projects" class="cta">
+                        <img  src="{{ asset('css/website/img/coding.svg') }}" alt="Explore More">
+                        <span>{{ __('page.home_page.explore_more') }}</span>
+                    </a>
+                </div>
+            @endif
     </main>
 
 </div>

@@ -100,6 +100,7 @@ h3 a:hover {
     color: #1D263B;
     background-color: #FFFFFF;
     margin-top: 50px;
+    justify-content: space-evenly;
     transition: all 0.2s ease;
     cursor: pointer;
 }
@@ -111,6 +112,7 @@ h3 a:hover {
 
 .cta span {
     margin-left: 10px;
+    margin-right: 10px;
     color: #1D263B;
     font-weight: 700;
 }

@@ -5,11 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Spatie\Translatable\HasTranslations;
 
 class About extends Model
 {
     //
-    use HasFactory;
+    use HasFactory, HasTranslations;
 
     protected $fillable = [
 
@@ -28,8 +29,17 @@ class About extends Model
     ];
 
     protected $casts = [
+        'degree' => 'array',
+        'institution' => 'array',
         'achievements' => 'array',
     ];
+
+    public $translatable = [
+        'degree',
+        'institution',
+        'achievements',
+    ];
+
 
     public function statements(): HasMany
     {

@@ -18,7 +18,7 @@
     <!-- user avatar button (ضعه في اليمين في نفس السطر) -->
     <div class="user-wrap">
         <button id="userBtn" class="user-btn" aria-haspopup="true" aria-expanded="false" aria-controls="userDropdown">
-            <img src="{{ Auth::user()->avatar ?? asset('css/website/img/me-icon.png') }}" alt="User avatar"
+            <img src="{{ Auth::user()->avatar ?? asset('css/website/img/profile.png') }}" alt="User avatar"
                 class="user-avatar">
         </button>
 

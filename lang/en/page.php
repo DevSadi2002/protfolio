@@ -13,4 +13,9 @@ return [
         'profile' => 'Profile',
         'logout' => 'Logout',
     ],
+
+    'home_page' => [
+        'explore_more' => 'Explore More'
+    ],
+
 ];

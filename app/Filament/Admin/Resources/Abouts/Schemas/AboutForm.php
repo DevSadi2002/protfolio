@@ -3,155 +3,265 @@
 namespace App\Filament\Admin\Resources\Abouts\Schemas;
 
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\FileUpload;
-use Filament\Forms\Components\MarkdownEditor;
-use Filament\Forms\Components\Placeholder;
-use Filament\Forms\Components\Repeater;
-use Filament\Forms\Components\TagsInput;
 use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\RichEditor;
+use Filament\Forms\Components\Repeater;
+use Filament\Schemas\Components\Grid;
 use Filament\Schemas\Components\Section;
+use Filament\Schemas\Components\Tabs;
+use Filament\Schemas\Components\Tabs\Tab;
 use Filament\Schemas\Schema;
-use Filament\Support\Icons\Heroicon;
 
 class AboutForm
 {
     public static function configure(Schema $schema): Schema
     {
         return $schema
-            ->components([
-                Section::make('التعليم')
-                    ->description('أضف تفاصيل تعليمك الأكاديمي، بما في ذلك الدرجة العلمية، المؤسسة التعليمية، وأبرز الإنجازات أو المهارات المكتسبة خلال دراستك.')
-                    ->icon(Heroicon::OutlinedBriefcase)
+            ->schema(components: [
+                Section::make(heading: '🎓 معلومات التعليم / Educational Information')
+                    ->description(description: '📚 أضف معلومات التعليم والشهادات الأكاديمية والإنجازات الأكاديمية')
+                    ->icon(icon: 'heroicon-o-academic-cap')
+                    ->collapsible()
+                    ->collapsed(condition: false)
+                    ->schema(components: [
+                        Grid::make(2)
+                            ->schema([
+                                TextInput::make('degree.ar')
+                                    ->label('🎓 الدرجة العلمية (عربي)')
+                                    ->placeholder('مثال: بكالوريوس هندسة الحاسوب')
+                                    ->helperText('أدخل الدرجة العلمية باللغة العربية')
+                                    ->maxLength(255)
+                                    ->required()
+                                    ->markAsRequired(),
+
+                                TextInput::make('degree.en')
+                                    ->label('🎓 Degree (English)')
+                                    ->placeholder('Ex: Bachelor of Computer Engineering')
+                                    ->helperText('Enter the degree in English')
+                                    ->maxLength(255)
+                                    ->required()
+                                    ->markAsRequired(),
+                            ]),
+
+                        Grid::make(3)
+                            ->schema([
+                                TextInput::make('institution.ar')
+                                    ->label('🏢 المؤسسة التعليمية (عربي)')
+                                    ->placeholder('مثال: جامعة دمشق')
+                                    ->helperText('أدخل اسم الجامعة أو المؤسسة باللغة العربية')
+                                    ->maxLength(255)
+                                    ->required()
+                                    ->markAsRequired(),
+
+                                TextInput::make('institution.en')
+                                    ->label('🏢 Institution (English)')
+                                    ->placeholder('Ex: Damascus University')
+                                    ->helperText('Enter the university or institution name in English')
+                                    ->maxLength(255)
+                                    ->required()
+                                    ->markAsRequired(),
+                            ]),
+
+                        Textarea::make('achievements.ar')
+                            ->label('🏆 الإنجازات الأكاديمية (عربي)')
+                            ->placeholder('مثال:\n• حاصل على جائزة التفوق الأكاديمي\n• قائد فريق في مشروع تخرج\n• معدل عالي (3.8/4.0)')
+                            ->helperText('✨ أضف إنجازاتك الأكاديمية، الجوائز، والمشاريع المميزة. استخدم نقاط للتنظيم')
+                            ->rows(5)
+                            ->columnSpanFull(),
+
+                        Textarea::make('achievements.en')
+                            ->label('🏆 Academic Achievements (English)')
+                            ->placeholder('Example:\n• Received Academic Excellence Award\n• Team Leader in Graduation Project\n• High GPA (3.8/4.0)')
+                            ->helperText('✨ Add your academic achievements, awards, and notable projects. Use bullet points for organization')
+                            ->rows(5)
+                            ->columnSpanFull(),
+                    ]),
+
+                Section::make('💼 الخبرات المهنية / Professional Experience')
+                    ->description('🏢 أضف خبراتك المهنية والعملية، الشركات التي عملت بها والمشاريع التي نفذتها')
+                    ->icon('heroicon-o-briefcase')
+                    ->collapsible()
+                    ->collapsed(false)
                     ->schema([
-                        TextInput::make('degree')
-                            ->label('المؤهل العلمي')
-                            ->placeholder('مثال: بكالوريوس علوم حاسوب')
-                            ->required()
-                            ->helperText('حدد الدرجة العلمية التي حصلت عليها.'),
-
-                        TextInput::make('institution')
-                            ->label('المؤسسة التعليمية')
-                            ->placeholder('مثال: جامعة الأقصى')
-                            ->required()
-                            ->helperText('مكان الدراسة أو الجامعة.'),
-
-                        TagsInput::make('achievements')
-                            ->label('المهارات والإنجازات')
-                            ->placeholder('أضف المهارات المكتسبة هنا')
-                            ->separator(',')
-                            ->suggestions(['Laravel', 'Livewire', 'Tailwind', 'Vue', 'React'])
-                            ->helperText('يمكنك إدراج المهارات أو الإنجازات التي اكتسبتها خلال دراستك.')
-                            ->nullable(),
-                    ])
-                    ->columnSpanFull(),
-
-                // مثال لتكرار نفس الأسلوب لأقسام أخرى مثل الخبرة العملية
-                Section::make('الخبرة العملية')
-                    ->description('أضف خبراتك العملية، الشركات التي عملت بها، المناصب التي شغلتها، والمهارات المكتسبة.')
-                    ->icon(Heroicon::OutlinedBriefcase)
-                    ->schema([
-                        Repeater::make(name: 'experience')
-                            ->relationship()
-                            ->label('الخبرة العملية')
+                        Repeater::make('experience')
+                            ->relationship('experience')
+                            ->label('💼 الخبرات / Experiences')
+                            ->addActionLabel('🎆 إضافة خبرة جديدة / Add New Experience')
+                            // ->deleteActionLabel('🗑️ حذف هذه الخبرة / Delete Experience')
+                            ->itemLabel(fn(array $state): ?string => ($state['title'] ?? 'خبرة جديدة') . (isset($state['company']) ? ' @ ' . $state['company'] : ''))
+                            ->collapsible()
+                            ->collapsed()
+                            ->cloneable()
+                            ->reorderableWithButtons()
+                            ->addable(true)
+                            ->deletable(true)
                             ->schema([
                                 TextInput::make('title')
-                                    ->label('المسمى الوظيفي')
-                                    ->placeholder('مثال: مطور ويب')
-                                    ->required(),
-
-                                TextInput::make('company')
-                                    ->label('اسم الشركة')
-                                    ->placeholder('مثال: شركة التقنية الحديثة')
-                                    ->required(),
-
-                                TextInput::make('company_links')
-                                    ->label('رابط موقع الشركة')
-                                    ->placeholder('مثال: www.laravel.com')
-                                    ->required(),
-
-                                TextInput::make('location')
-                                    ->label('الموقع')
-                                    ->placeholder('مثال: غزة، فلسطين')
-                                    ->nullable(),
-
-                                TextInput::make('start_date')
-                                    ->numeric()
-                                    ->label('تاريخ البدء')
-                                    ->required(),
-
-                                TextInput::make('end_date')
-                                    ->label('تاريخ الانتهاء')
-                                    ->nullable()
-                                    ->numeric()
-                                    ->helperText('اتركه فارغاً إذا كنت تعمل حالياً في هذه الوظيفة.'),
-                                TextInput::make('description_title')
-                                    ->placeholder('مثال: محلل بيانات مواقع')
-                                    ->label('مسؤولياتك ومهامك في هذه الوظيفة'),
-                                MarkdownEditor::make('description')
-                                    ->label('وصف العمل')
-                                    ->placeholder('صف مسؤولياتك ومهامك في هذه الوظيفة.')
+                                    ->label('👨‍💻 المسمى الوظيفي / Job Title')
+                                    ->placeholder('مثال: مطور ويب أول / Senior Web Developer')
+                                    ->required()
+                                    ->markAsRequired()
                                     ->columnSpanFull(),
 
+                                Grid::make(2)
+                                    ->schema([
+                                        TextInput::make('company')
+                                            ->label('🏬 اسم الشركة / Company Name')
+                                            ->placeholder('مثال: شركة التقنيات المتقدمة / Advanced Tech Solutions')
+                                            ->required()
+                                            ->markAsRequired(),
+
+                                        TextInput::make('company_links')
+                                            ->label('🔗 رابط الشركة / Company Link')
+                                            ->placeholder('https://company-website.com')
+                                            ->url()
+                                            ->prefix('🌐')
+                                            ->suffixIcon('heroicon-o-link')
+                                            ->helperText('اختياري - اتركه فارغاً إذا لم يكن متاحاً'),
+                                    ]),
+
+                                Grid::make(3)
+                                    ->schema([
+                                        TextInput::make('location')
+                                            ->label('الموقع / Location')
+                                            ->placeholder('دمشق، سوريا / Damascus, Syria')
+                                            ->prefix('📍'),
+
+                                        DatePicker::make('start_date')
+                                            ->label('تاريخ البداية / Start Date')
+                                            ->required()
+                                            ->displayFormat('Y')
+                                            ->prefix('📅'),
+
+                                        DatePicker::make('end_date')
+                                            ->label('تاريخ النهاية / End Date')
+                                            ->displayFormat('Y')
+                                            ->prefix('📅')
+                                            ->helperText('اتركه فارغاً إذا كانت الوظيفة الحالية / Leave empty if current job'),
+                                    ]),
+
+                                TextInput::make('description_title')
+                                    ->label('عنوان الوصف / Description Title')
+                                    ->placeholder('مثال: المهام والمسؤوليات / Tasks & Responsibilities')
+                                    ->columnSpanFull(),
+
+                                Textarea::make('description')
+                                    ->label('وصف الخبرة / Experience Description')
+                                    ->placeholder('اكتب وصفاً مفصلاً عن مهامك ومسؤولياتك وإنجازاتك...')
+                                    ->rows(4)
+                                    ->columnSpanFull(),
                             ])
-                    ])
-                    ->columnSpanFull(),
-                Section::make('بطاقات التعريف')
-                    ->description('أضف معلومات تعريفية عن نفسك مثل الاسم، الألقاب، الضمائر، أو أي بيانات قصيرة ترغب بعرضها.')
-                    ->icon(Heroicon::OutlinedIdentification)
-                    ->schema([
-                        Repeater::make('statements')
-                            ->relationship() // يربط مع دالة statements() في الـ Model
-                            ->label('بطاقة تعريف')
-                            ->schema([
-                                TextInput::make('key')
-                                    ->label('نوع المعلومات')
-                                    ->placeholder('مثال: الاسم، الضمائر، الوظيفة')
-                                    ->required()
-                                    ->helperText('حدد نوع المعلومات أو العنوان الذي ستعرضه.'),
 
-                                TextInput::make('value')
-                                    ->label('القيمة')
-                                    ->placeholder('مثال: Saadi Saadi، she/her، مطور ويب')
-                                    ->required()
-                                    ->helperText('ضع القيمة المناسبة للنوع المختار.'),
-                            ])
-                            ->columns(2)
-                            ->createItemButtonLabel('أضف بطاقة جديدة')
-                            ->collapsible(),
-                    ])
-                    ->columnSpanFull(),
+                    ]),
 
-
-                // Section للمهارات باستخدام Repeater
-                Section::make('المهارات التقنية')
-                    ->description('أضف المهارات التقنية التي تتقنها، مع أيقونة مميزة لكل مهارة.')
-                    ->icon(Heroicon::OutlinedCodeBracket)
+                Section::make('🛠️ المهارات التقنية / Technical Skills')
+                    ->description('⚡ أضف مهاراتك التقنية والبرمجية، لغات البرمجة، الأطر والمكتبات')
+                    ->icon('heroicon-o-wrench-screwdriver')
+                    ->collapsible()
+                    ->collapsed(false)
                     ->schema([
                         Repeater::make('skills')
-                            ->relationship() // يربط مع دالة skills() في الـ Model
-                            ->label('المهارات')
+                            ->relationship('skills')
+                            ->label('🛠️ المهارات / Skills')
+                            ->addActionLabel('✨ إضافة مهارة جديدة / Add New Skill')
+                            // ->deleteActionLabel('🗑️ حذف هذه المهارة / Delete Skill')
+                            ->itemLabel(fn(array $state): ?string => $state['name'] ?? 'مهارة جديدة')
+                            ->collapsible()
+                            ->collapsed()
+                            ->cloneable()
+                            ->reorderableWithButtons()
+                            ->addable(true)
+                            ->deletable(true)
                             ->schema([
-                                TextInput::make('name')
-                                    ->label('اسم المهارة')
-                                    ->placeholder('مثال: Git أو Laravel')
-                                    ->required(),
+                                Grid::make(2)
+                                    ->schema([
+                                        TextInput::make('name')
+                                            ->label('⚡ اسم المهارة / Skill Name')
+                                            ->placeholder('مثال: Laravel, React.js, Python, JavaScript')
+                                            ->required()
+                                            ->markAsRequired()
+                                            ->helperText('📝 أدخل اسم المهارة أو التقنية أو لغة البرمجة')
+                                            ->suffixIcon('heroicon-o-code-bracket'),
 
-                                FileUpload::make('icon')
-                                    ->label('أيقونة المهارة')
-                                    ->image()
-                                    ->disk('public')
-                                    ->directory('skills') // حفظ الصور في storage/app/public/skills
-                                    ->required()
-                                    ->downloadable()
-                                    ->imagePreviewHeight('50')
-                                    ->helperText('اختر صورة صغيرة تمثل المهارة.'),
+                                        FileUpload::make('icon')
+                                            ->label('🎨 أيقونة المهارة / Skill Icon')
+                                            ->image()
+                                            ->directory('skills-icons')
+                                            ->imageEditor()
+                                            ->imageCropAspectRatio('1:1')
+                                            ->imageResizeTargetWidth(64)
+                                            ->imageResizeTargetHeight(64)
+                                            ->helperText('🖼️ حمل أيقونة للمهارة (64x64 px مفضل) - اختياري')
+                                            ->acceptedFileTypes(['image/png', 'image/jpeg', 'image/svg+xml'])
+                                            ->maxSize(1024)
+                                            ->hintIcon('heroicon-o-information-circle')
+                                            ->hint('يفضل استخدام SVG لجودة أفضل'), // 1MB
+                                    ]),
                             ])
-                            ->columns(2)
-                            ->createItemButtonLabel('أضف مهارة جديدة')
-                            ->collapsible(), // يمكن طي كل عنصر
-                    ])
-                    ->columnSpanFull()
 
+                    ]),
+
+                Section::make('💭 البيانات والعبارات المهمة / Key Statements')
+                    ->description('✨ أضف البيانات والعبارات المهمة عنك، رؤيتك وأهدافك ومبادئك')
+                    ->icon('heroicon-o-chat-bubble-left-right')
+                    ->collapsible()
+                    ->collapsed(false)
+                    ->schema([
+                        Repeater::make('statements')
+                            ->relationship('statements')
+                            ->label('💭 البيانات / Statements')
+                            ->addActionLabel('💫 إضافة بيان جديد / Add New Statement')
+                            // ->deleteActionLabel('🗑️ حذف هذا البيان / Delete Statement')
+                            ->itemLabel(fn(array $state): ?string => $state['key']['ar'] ?? $state['key']['en'] ?? 'بيان جديد')
+                            ->collapsible()
+                            ->collapsed()
+                            ->cloneable()
+                            ->reorderableWithButtons()
+                            ->addable(true)
+                            ->deletable(true)
+                            ->schema([
+                                Grid::make(2)
+                                    ->schema([
+                                        TextInput::make('key.ar')
+                                            ->label('🔑 المفتاح (عربي) / Key (Arabic)')
+                                            ->placeholder('مثال: الرؤية، الهدف، المبدأ، الشغف')
+                                            ->required()
+                                            ->markAsRequired()
+                                            ->helperText('🎨 أدخل عنوان قصير ومعبر للبيان')
+                                            ->suffixIcon('heroicon-o-key'),
+
+                                        TextInput::make('key.en')
+                                            ->label('🔑 المفتاح (إنجليزي) / Key (English)')
+                                            ->placeholder('Ex: Vision, Goal, Principle, Passion')
+                                            ->required()
+                                            ->markAsRequired()
+                                            ->helperText('🎨 Enter a short and meaningful title for the statement')
+                                            ->suffixIcon('heroicon-o-key'),
+                                    ]),
+
+                                Textarea::make('value.ar')
+                                    ->label('📜 القيمة (عربي) / Value (Arabic)')
+                                    ->placeholder('مثال:\nأسعى إلى تطوير حلول تقنية مبتكرة تحسن من حياة الناس وتحقق أهداف الشركات بكفاءة عالية.')
+                                    ->required()
+                                    ->markAsRequired()
+                                    ->rows(4)
+                                    ->helperText('✨ اكتب نصاً معبراً وملهماً يعكس شخصيتك وقيمك')
+                                    ->columnSpanFull(),
+
+                                Textarea::make('value.en')
+                                    ->label('📜 القيمة (إنجليزي) / Value (English)')
+                                    ->placeholder('Example:\nI strive to develop innovative technical solutions that improve people\'s lives and achieve business objectives with high efficiency.')
+                                    ->required()
+                                    ->markAsRequired()
+                                    ->rows(4)
+                                    ->helperText('✨ Write an expressive and inspiring text that reflects your personality and values')
+                                    ->columnSpanFull(),
+                            ])
+
+                    ]),
             ]);
     }
 }

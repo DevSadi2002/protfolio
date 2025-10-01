@@ -12,4 +12,8 @@ return [
         'profile' => 'الملف الشخصي',
         'logout' => 'تسجيل الخروج',
     ],
+    'home_page' => [
+        'explore_more' => 'أكتشف المزيد'
+    ],
+
 ];

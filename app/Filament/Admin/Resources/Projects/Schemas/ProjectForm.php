@@ -37,10 +37,17 @@ class ProjectForm
                                 ->suggestions(['Laravel', 'Livewire', 'Tailwind', 'Vue', 'React'])
                                 // عند الحفظ اترك المصفوفة كما هي ودع الـ Eloquent casts يتعامل مع التحويل إلى JSON
                                 ->dehydrateStateUsing(fn($state) => is_array($state) ? array_values($state) : $state),
-                            MarkdownEditor::make('description')
-                                ->label('وصف المشروع')
-                                ->columnSpanFull()
-                                ->placeholder('اكتب تفاصيل المشروع...'),
+                            Grid::make()->schema(components: [
+                                MarkdownEditor::make(name: 'description.ar')
+                                    ->label(label: 'وصف المشروع (العربية)')
+                                    ->placeholder(placeholder: 'اكتب تفاصيل المشروع بالعربية...')
+                                    ->extraAttributes(attributes: ['dir' => 'rtl']),
+
+                                MarkdownEditor::make(name: 'description.en')
+                                    ->label(label: 'Project description (English)')
+                                    ->placeholder(placeholder: 'Write project details in English...'),
+                            ])->columnSpanFull(),
+
                         ])->columns(2),
 
 

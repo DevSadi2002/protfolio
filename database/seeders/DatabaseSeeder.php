@@ -29,7 +29,10 @@ class DatabaseSeeder extends Seeder
             'name' => 'Portfolio Website',
             'project_skills' => json_encode(['Laravel', 'TailwindCSS', 'MySQL']),
             'image' => 'projects/portfolio.png',
-            'description' => 'Personal portfolio showcasing projects and a blog.',
+            'description' => json_encode([
+                'en' => 'Personal portfolio showcasing projects and a blog.',
+                'ar' => 'محفظة شخصية تعرض المشاريع والمدونة.'
+            ]),
             'githup' => 'https://github.com/example/portfolio',
             'links' => 'https://example.com',
             'created_at' => now(),
@@ -39,7 +42,10 @@ class DatabaseSeeder extends Seeder
             'name' => 'Task Manager API',
             'project_skills' => json_encode(['Laravel', 'Sanctum', 'Postman', 'Redis']),
             'image' => 'projects/task-api.png',
-            'description' => 'RESTful API for task management with token auth and caching.',
+            'description' => json_encode([
+                'en' => 'RESTful API for task management with token auth and caching.',
+                'ar' => 'واجهة برمجة تطبيقات RESTful لإدارة المهام مع مصادقة الرمز والتخزين المؤقت.'
+            ]),
             'githup' => 'https://github.com/example/task-api',
             'links' => null,
             'created_at' => now(),
@@ -49,7 +55,10 @@ class DatabaseSeeder extends Seeder
             'name' => 'Realtime Chat',
             'project_skills' => json_encode(['Laravel', 'Echo', 'Pusher', 'Vue.js']),
             'image' => 'projects/chat.png',
-            'description' => 'Realtime chat application with presence and typing indicators.',
+            'description' => json_encode([
+                'en' => 'Realtime chat application with presence and typing indicators.',
+                'ar' => 'تطبيق دردشة في الوقت الفعلي مع مؤشرات الحضور والكتابة.'
+            ]),
             'githup' => 'https://github.com/example/chat-app',
             'links' => 'https://chat.example.com',
             'created_at' => now(),
@@ -57,7 +66,7 @@ class DatabaseSeeder extends Seeder
             ],
         ]);
 
-        Setting::create([
+        Setting::create(attributes: [
             'description' => [
                 'en' => 'Welcome to my portfolio website! I am a passionate developer specializing in web applications. Explore my projects and blog to learn more about my work and skills.',
                 'ar' => 'مرحبًا بكم في موقع محفظتي! أنا مطور شغوف متخصص في تطبيقات الويب. استكشف مشاريعي ومدونتي لمعرفة المزيد عن عملي ومهاراتي.'

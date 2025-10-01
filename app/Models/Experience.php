@@ -11,6 +11,7 @@ class Experience extends Model
     //
     use HasFactory;
     protected $fillable = [
+        'about_id',
         // Experiences
         'title',
         'company',

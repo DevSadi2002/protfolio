@@ -44,6 +44,13 @@
 
 .socials ul li:not(:last-child) {
     margin-right: 12px;
+
+}
+
+/* RTL Support for social links */
+[dir="rtl"] .socials ul li:not(:last-child) {
+    margin-right: 0;
+    margin-left: 12px;
 }
 
 .socials ul li a i {
@@ -76,6 +83,29 @@
     margin-right: 12px;
 }
 
+/* RTL Support for footer button icons */
+[dir="rtl"] .footer-button img {
+    margin-right: 0;
+    margin-left: 12px;
+}
+
+/* RTL General Support */
+[dir="rtl"] .footer {
+    direction: rtl;
+}
+
+[dir="rtl"] .footer-column {
+    text-align: center;
+}
+
+[dir="rtl"] .socials ul {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .copyright {
+    text-align: center;
+}
+
 @media only screen and (min-width: 768px) {
     .footer {
         margin: 0 auto;
@@ -83,5 +113,10 @@
         flex-direction: row;
         justify-content: space-between;
         max-width: 1600px;
+    }
+
+    /* RTL Support for larger screens */
+    [dir="rtl"] .footer {
+        flex-direction: row-reverse;
     }
 }

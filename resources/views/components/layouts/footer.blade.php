@@ -1,6 +1,7 @@
  @php
      use App\Models\Setting;
      $setting = Setting::first();
+     $isRtl = app()->getLocale() === 'ar';
  @endphp
  <footer class="footer-container">
      <div class="footer">

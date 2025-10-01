@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             // Statements (terminal info)
             $table->foreignId('about_id')->constrained()->cascadeOnDelete();
-            $table->string('key');
-            $table->text('value');
+            $table->json('key');
+            $table->json('value');
             $table->timestamps();
         });
     }

@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->json(column: 'project_skills')->nullable();
             $table->string('image')->nullable();
-            $table->longText('description');
+            $table->json('description')->nullable();
 
             $table->string('githup')->nullable();
             $table->string('links')->nullable();

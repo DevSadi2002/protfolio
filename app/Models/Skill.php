@@ -13,6 +13,7 @@ class Skill extends Model
 
     protected $table = 'skills';
     protected $fillable = [
+        'about_id',
         'name',
         'icon'
     ];
